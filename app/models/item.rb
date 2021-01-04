@@ -12,9 +12,11 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :name
-    validates :price, format: { with: /\A[0-9]+\z/, message: "Half-width number" }
+    validates :price, numericality: { with: /\A[0-9]+\z/, message: "Half-width number" }
+    validates :price, numericality: {:greater_than => 299,:less_than  =>10000000, message: "Out of setting range"}
     validates :description
     validates :user
+    validates :image
   end
 
   with_options numericality: { other_than: 0 } do
@@ -24,9 +26,6 @@ class Item < ApplicationRecord
     validates :preparation_id 
     validates :category_id
   end 
-  after(:build) do |item|
-    item.image.attach(io: File.open('download/test_omuraice.png'), filename: 'test_omuraice.png')
-  end
 end
 
 
