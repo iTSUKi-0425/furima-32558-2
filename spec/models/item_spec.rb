@@ -40,7 +40,6 @@ RSpec.describe Item, type: :model do
     it "価格が¥300未満だと出品できない" do
       @item.price = 290
       @item.valid?
-      binding.pry
       expect(@item.errors.full_messages).to include("Price Out of setting range")
     end
 

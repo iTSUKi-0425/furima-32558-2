@@ -13,7 +13,7 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :price, numericality: { with: /\A[0-9]+\z/, message: "Half-width number" }
-    validates :price, numericality: {:greater_than => 299,:less_than  =>10000000, message: "Out of setting range"}
+    validates :price, numericality: {only_integer: true,:greater_than => 299,:less_than  =>10000000, message: "Out of setting range"}
     validates :description
     validates :user
     validates :image
@@ -27,9 +27,3 @@ class Item < ApplicationRecord
     validates :category_id
   end 
 end
-
-
-
-
-
-
