@@ -1,6 +1,6 @@
 class History 
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id,:postal_code, :area_id, :city, :house_number, :building_name, :phone_number, :order_id, :token
+  attr_accessor :user_id, :item_id,:postal_code, :area_id, :city, :house_number, :building_name, :phone_number, :token
 
   # ここにバリデーションの処理を書く
   with_options presence: true do

@@ -2,9 +2,8 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :item_params,        only: [:index, :create]
   def index
-    redirect_to root_path if  @item.order != nil
     @history = History.new   
-    if current_user.id == @item.user_id
+    if current_user.id == @item.user_id || @item.order != nil
       redirect_to root_path
     end
   end
@@ -23,7 +22,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:history).permit(:postal_code, :area_id, :city, :house_number, :building_name, :phone_number, :order_id).merge(item_id: params[:item_id],user_id: current_user.id,token: params[:token])
+    params.require(:history).permit(:postal_code, :area_id, :city, :house_number, :building_name, :phone_number).merge(item_id: params[:item_id],user_id: current_user.id,token: params[:token])
     # ↑スクショ用で改行しております。
   end
 
