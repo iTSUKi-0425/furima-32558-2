@@ -17,7 +17,7 @@
 ### Association
 
 - has_many :items
-- has_many :histories
+- has_many :orders
 
 ## items テーブル
 
@@ -36,25 +36,25 @@
 ### Association
 
 - belongs_to :user
-- has_one :history
+- has_one :order
 
 ## addresses テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| postcode         | string     | null: false                    |
-| area_id          | integer    | null: false                    |
-| address_city     | string     | null: false                    |
-| address_street   | string     | null: false                    |
-| address_building | string     |                                |
+| postal_code      | string     | null: false                    |
+| area             | integer    | null: false                    |
+| city             | string     | null: false                    |
+| house_number     | string     | null: false                    |
+| building_name    | string     |                                |
 | phone_number     | string     | null: false                    |
-| history          | references | null: false, foreign_key: true |
+| order            | references | null: false, foreign_key: true |
 
 
 ### Association
-- belongs_to :history
+- belongs_to :order
 
-## histories テーブル
+## orders テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
