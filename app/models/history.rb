@@ -10,6 +10,8 @@ class History
     validates :city
     validates :house_number
     validates :phone_number, format: {with: /\A\d{10,11}\z/, message: "Input only number"}
+    validates :user_id
+    validates :item_id
   end
   
   def save
